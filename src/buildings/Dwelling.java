@@ -60,11 +60,11 @@ public class Dwelling{
     public void setFloor (int number, DwellingFloor newFloor)
     {
         if(number<getSize()) {
-            getArrayFloors()[number]=newFloor;
+            getArrayFloors()[number]=newFloor; //todo зачем getArrayFloors() когда можешь напрямую к массиву обращаться?
         }
     }
     //метод получения объекта расположения квартиры в доме по её номеру в доме
-    public LocationFlatDTO getLocationFlat(int number)
+    public LocationFlatDTO getLocationFlat(int number) // todo такие вещи относятся к особенностям реализации и должны быть приватными
     {
         LocationFlatDTO location = null;
         int tempSize=0;
@@ -135,7 +135,7 @@ public class Dwelling{
         Flat buf = null;
         Flat [] arrayFlat = new Flat[getCountFlats()];
         for(int i=0;i<getArrayFloors().length;i++) {
-            for(int j=0; j<getArrayFloors()[i].getSize();j++) {
+            for(int j=0; j<getArrayFloors()[i].getSize();j++) { //todo если getArrayFloors() возвращает копию массива, то лучше по квартирам гулять методом getFlat класса DwellingFloor()
                 if(getArrayFloors()[i].getArrayFlat()[j]!=null)
                 arrayFlat[k] = getArrayFloors()[i].getArrayFlat()[j];
                 else arrayFlat[k] = new Flat(-1,0);

@@ -20,7 +20,7 @@ public class DwellingFloor {
     //метод получения общей площади квартир этажа
     public int getAreaFlats() {
         int areaFlats = 0;
-        for(int i=0; i<arrayFlat.length;i++)
+        for(int i=0; i<arrayFlat.length;i++) //todo а size тебе зачем?
         {
             if(arrayFlat[i]!=null)
             areaFlats += arrayFlat[i].getArea();
@@ -38,7 +38,7 @@ public class DwellingFloor {
         return allNomberFlats;
     }
     //метод получения массива квартир этажа
-    public Flat[] getArrayFlat() {
+    public Flat[] getArrayFlat() { //todo лучше копию возвращать
         return arrayFlat;
     }
     //метод получения объекта квартиры по её номеру на этаже
@@ -57,7 +57,7 @@ public class DwellingFloor {
     public void addNewFlat (int number, Flat newFlat)
     {
         if(size==arrayFlat.length) {//если массив полностью заполнен квартирами
-            while (number >= arrayFlat.length) {
+            while (number >= arrayFlat.length) { //todo цикл то нафиг? просто проверка аналогичная методу setFlat()
                 Flat[] newArrayFlat = new Flat[2 * arrayFlat.length];
                 System.arraycopy(arrayFlat, 0, newArrayFlat, 0, arrayFlat.length);
                 arrayFlat = newArrayFlat;
@@ -68,7 +68,7 @@ public class DwellingFloor {
             System.arraycopy(arrayFlat, number, arrayFlat, number+1, arrayFlat.length-number-1);
         }
         arrayFlat[number]=newFlat;
-        size=arrayFlat.length;
+        size=arrayFlat.length; //todo почему length то, если size++?
 
     }
     //метод удаления квартиры по её номеру на этаже
@@ -77,12 +77,12 @@ public class DwellingFloor {
         if(number<size&&arrayFlat[number]!=null) {
             System.arraycopy(arrayFlat, number+1, arrayFlat, number, size-number-1);
         }
-        size=arrayFlat.length;
+        size=arrayFlat.length;//todo почему length то, если size--?
     }
     //метод получения самой большой по площади квартиры этажа
     public Flat getBestSpace(){
         Flat flatMaxArea = new Flat(0,0);
-        for(int i=1; i<arrayFlat.length;i++)
+        for(int i=1; i<arrayFlat.length;i++) //todo а size тебе зачем?
         {
             if((getArrayFlat()[i]!=null)&&(getArrayFlat()[i].getArea()>flatMaxArea.getArea())){
                 flatMaxArea = getArrayFlat()[i];
